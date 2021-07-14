@@ -1,15 +1,15 @@
 import flask
+from flask import request
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST'])
 def home():
-    ip='192.68.0.44'
-    username='mleontenko'
-    password='marin123'
-
-    return ip + ' ' + username + ' ' + password
+    ip = request.form["ip"]
+    username = request.form["username"]
+    password = request.form["password"]
+    
+    return ip
 
 app.run()
